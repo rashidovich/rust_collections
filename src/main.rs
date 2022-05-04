@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::io;
 
 fn main() {
     let mut array = 
@@ -34,4 +35,28 @@ fn main() {
     println!("total sum {}", total_sum);
     println!("median {}", array[median]);
     println!("{:?}", map);
+
+    println!("------------");
+
+    let vowel = vec!["a", "e", "i", "o", "u", "y"];
+
+    loop {
+        println!("please enter any word: ");
+
+        let mut word = String::new();
+        io::stdin().read_line(&mut word).expect("error.");
+        
+        let trimmed_word = word.trim();
+
+        let first_letter = &trimmed_word[0..1];
+        let result;
+
+        if vowel.contains(&first_letter) {
+            result = format!("{}-{}", trimmed_word, "hay");
+        } else {
+            result = format!("{}-{}{}", &trimmed_word[1..trimmed_word.len()], &first_letter, "ay");
+        }
+
+        println!("pig latin: {}", result);
+    }
 }
